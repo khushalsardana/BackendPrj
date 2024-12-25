@@ -5,32 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
+        /* Basic styling for body */
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:white;
         }
+
+        /* Styling for the navigation bar */
         nav {
-            background-color: #333;
+            background-color: rgb(37, 123, 227);
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         nav a {
             float: left;
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            padding: 14px 20px;
             text-decoration: none;
+            font-size: 16px;
         }
         nav a:hover {
-            background-color: #ddd;
-            color: black;
+           border-bottom: 2px solid white ;
+            color:snow;
+        }
+
+        /* Header section */
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #333;
+            margin-top: 40px;
+        }
+
+        /* Centering the image */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .image-container img {
+            width: 80%;
+            max-width: 500px;
+            /* border-radius: 10px; */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling the body content */
+        .content {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav>
         <a href="/register">Register</a>
-        <a href="/allstudent">All Students</a>
+        <a href="/viewusers">View Users</a>
     </nav>
+
+    <!-- Welcome Header -->
     <h1>Welcome to the Student Portal</h1>
+
+    <!-- Centered Image Section -->
+    <div class="image-container">
+       <img src="data:image/png;base64,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">
+    </div>
+
+    <!-- Additional Content Section -->
+    <div class="content">
+        <p>Explore all the resources and services we offer to enhance your learning experience. Stay connected and up-to-date with the latest student activities and announcements.</p>
+    </div>
 </body>
 </html>

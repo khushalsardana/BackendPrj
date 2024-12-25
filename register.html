@@ -5,41 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <style>
+        /* General body styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgb(37, 123, 227), white);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        form {
-            width: 300px;
-            margin: 50px auto;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input, button {
+
+        /* Styling for the card */
+        .card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        /* Hover effect on the card */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header styling */
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            border-bottom: 4px solid  rgb(37, 123, 227); 
+            width: 30px;
+          
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        label {
+            text-align: left;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: rgb(37, 123, 227);;
+            outline: none;
+        }
+
+        /* Button styling */
+        button {
+            padding: 12px;
+            background-color: rgb(37, 123, 227);;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgb(37, 123, 227);;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 600px) {
+            .card {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            input, button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <h1>Register</h1>
-    <form id="registerForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <div class="card">
+        <h1>Register</h1>
+        <form id="registerForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <button type="submit">Register</button>
-    </form>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
     <script>
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -50,9 +138,9 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: formData,
             })
-                .then(res => res.text())
-                .then(message => alert(message))
-                .catch(err => console.error('Error:', err));
+            .then(res => res.text())
+            .then(message => alert(message))
+            .catch(err => console.error('Error:', err));
         });
     </script>
 </body>

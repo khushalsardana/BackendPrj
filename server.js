@@ -17,9 +17,9 @@ const server = http.createServer((req, res) => {
                     res.end(data);
                 }
             });
-        } else if (req.url === "/allstudent") {
+        } else if (req.url === "/viewusers") {
             // Serve the allstudents page
-            fs.readFile("allstudent.html", "utf8", (err, data) => {
+            fs.readFile("viewusers.html", "utf8", (err, data) => {
                 if (err) {
                     res.writeHead(500);
                     res.end("Server Error");
